@@ -681,10 +681,15 @@
       summary:"Leads day-to-day Music teaching. Content below is placeholder pending the listening-phase conversation with Alex.",
       items:[
         { id:"meer-listen",  term:1, type:"obs",   title:"Listening-phase conversation", when:"Within the first month",  detail:"Alex listens first: what Meer is already doing, what she needs, and what isn't working before anything is proposed." },
+        { id:"meer-obs",     term:1, type:"obs",   title:"Observation and reflection",   when:"To be scheduled",         detail:"Formal lesson observation by Alex, with shared written reflection. Date to be confirmed." },
         { id:"meer-year",    term:1, type:"deliv", title:"Year at a Glance",             when:"Confirmed after the listening-phase conversation", detail:"Year groups and the rough shape of Meer's year. Awaiting listening-phase input, currently a placeholder." },
         { id:"meer-sow",     term:1, type:"deliv", title:"Scheme of Work status",        when:"Confirmed after the listening-phase conversation", detail:"Where the scheme of work stands and what's missing. Awaiting listening-phase input, currently a placeholder." },
         { id:"meer-deliv",   term:2, type:"deliv", title:"Second semester deliverable",  when:"Agreed for second semester", detail:"One of three second-semester deliverables, agreed with Alex once the listening phase is complete." },
-        { id:"meer-checkin", term:3, type:"obs",   title:"Mid-term check-in",            when:"Mid-term",             detail:"Light-touch conversation tied to the mid-term point, not a performance review." }
+        { id:"meer-checkin", term:3, type:"obs",   title:"Mid-term check-in",            when:"Mid-term",             detail:"Light-touch conversation tied to the mid-term point, not a performance review." },
+        { id:"meer-ra1", term:1, type:"report", title:"Report and Analysis document", when:"Last day of Term 1 · 8 Oct", date:"2026-10-09", detail:"Complete the Report and Analysis document. Paste the Drive link in attachments below.", chips:["Google Drive document"] },
+        { id:"meer-ra2", term:2, type:"report", title:"Report and Analysis document", when:"Last day of Term 2 · 18 Dec", date:"2026-12-19", detail:"Complete the Report and Analysis document. Paste the Drive link in attachments below.", chips:["Google Drive document"] },
+        { id:"meer-ra3", term:3, type:"report", title:"Report and Analysis document", when:"Last day of Term 3 · 18 Mar", date:"2027-03-19", detail:"Complete the Report and Analysis document. Paste the Drive link in attachments below.", chips:["Google Drive document"] },
+        { id:"meer-ra4", term:4, type:"report", title:"Report and Analysis document", when:"Last day of Term 4 · 17 Jun", date:"2027-06-18", detail:"Complete the Report and Analysis document. Paste the Drive link in attachments below.", chips:["Google Drive document"] }
       ]
     },
     emma: {
@@ -695,7 +700,11 @@
         { id:"emma-year",    term:1, type:"deliv", title:"Year at a Glance",             when:"Confirmed after the listening-phase conversation", detail:"Year groups and the rough shape of Emma's year. Awaiting listening-phase input, currently a placeholder." },
         { id:"emma-sow",     term:1, type:"deliv", title:"Scheme of Work status",        when:"Confirmed after the listening-phase conversation", detail:"Where the scheme of work stands and what's missing. Awaiting listening-phase input, currently a placeholder." },
         { id:"emma-deliv",   term:2, type:"deliv", title:"Second semester deliverable",  when:"Agreed for second semester", detail:"One of three second-semester deliverables, agreed with Alex once the listening phase is complete." },
-        { id:"emma-checkin", term:3, type:"obs",   title:"Mid-term check-in",            when:"Mid-term",             detail:"Light-touch conversation tied to the mid-term point, not a performance review." }
+        { id:"emma-checkin", term:3, type:"obs",   title:"Mid-term check-in",            when:"Mid-term",             detail:"Light-touch conversation tied to the mid-term point, not a performance review." },
+        { id:"emma-ra1", term:1, type:"report", title:"Report and Analysis document", when:"Last day of Term 1 · 8 Oct", date:"2026-10-09", detail:"Complete the Report and Analysis document. Paste the Drive link in attachments below.", chips:["Google Drive document"] },
+        { id:"emma-ra2", term:2, type:"report", title:"Report and Analysis document", when:"Last day of Term 2 · 18 Dec", date:"2026-12-19", detail:"Complete the Report and Analysis document. Paste the Drive link in attachments below.", chips:["Google Drive document"] },
+        { id:"emma-ra3", term:3, type:"report", title:"Report and Analysis document", when:"Last day of Term 3 · 18 Mar", date:"2027-03-19", detail:"Complete the Report and Analysis document. Paste the Drive link in attachments below.", chips:["Google Drive document"] },
+        { id:"emma-ra4", term:4, type:"report", title:"Report and Analysis document", when:"Last day of Term 4 · 17 Jun", date:"2027-06-18", detail:"Complete the Report and Analysis document. Paste the Drive link in attachments below.", chips:["Google Drive document"] }
       ]
     },
     alex: {
@@ -1125,6 +1134,7 @@
 
     var chips = (it.chips||[]).map(function(c){ return '<span class="chip">'+esc(c)+'</span>'; }).join("");
     var editable = canEdit(key);
+    if (it.id && it.id.indexOf("-ra") !== -1 && WHO !== "alex") editable = false;
 
     box.innerHTML =
       '<div class="det-kind">'+kindLabel(it.type)+(it.pencil?" · pencilled":"")+'</div>' +
